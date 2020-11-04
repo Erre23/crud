@@ -1,15 +1,18 @@
 const petsContainer = document.getElementById('petsContainer');
 const petCard = document.getElementsByClassName('card')[0];
-let petCardSelected;
-
 const btnAddPet = document.getElementById("btnAddPet");
 const frmModalAddPet = document.getElementById("frmModalAddPet");
 const frmModalDeletePet = document.getElementById("frmModalDeletePet");
+
+let petCardSelected;
 
 petsContainer.addEventListener('click', petsContainer_Click)
 btnAddPet.addEventListener('click', btnAddPet_click);
 frmModalAddPet.addEventListener('click', frmModal_click);
 frmModalDeletePet.addEventListener('click', frmModalDelete_click);
+
+petCard.addEventListener('mouseenter',petsContainer_mouseenter);
+petCard.addEventListener('mouseleave', petsContainer_mouseleave);
 
 // When the user clicks on the button, open the modal
 function btnAddPet_click() {
@@ -20,11 +23,47 @@ function btnAddPet_click() {
 function petsContainer_Click(e) {
     if (e.target.classList.contains('card-delete')) {
         petCardSelected = e.target.parentElement;
-        frmModalDeletePet_Open();
+        frmModalDelete_Open();
     }
     else if (e.target.classList.contains('card-edit')) {
         petCardSelected = e.target.parentElement;
         petCardSelected_read();
+    }
+}
+
+function petsContainer_mouseenter(e) {
+    e.preventDefault();
+    if (e.target.classList.contains('card'))
+    {
+        const card = e.target;
+        const buttonEdit = card.querySelector(".card-edit");
+        const buttonDelete = card.querySelector(".card-delete");
+
+        if (buttonEdit) {
+            buttonEdit.style.display = "inline-block";
+        }
+        
+        if (buttonDelete) {
+            buttonDelete.style.display = "inline-block";
+        }
+    }
+}
+
+
+function petsContainer_mouseleave(e) {
+    if (e.target.classList.contains('card'))
+    {
+        const card = e.target;
+        const buttonEdit = card.querySelector(".card-edit");
+        const buttonDelete = card.querySelector(".card-delete");
+
+        if (buttonEdit) {
+            buttonEdit.style.display = "none";
+        }
+        
+        if (buttonDelete) {
+            buttonDelete.style.display = "none";
+        }
     }
 }
 
@@ -57,27 +96,6 @@ function frmModal_click(e) {
     }
     else if (e.target.classList.contains('modal-success')) {
         frmModal_read()
-    }
-}
-// When the user clicks on the button, open the modal
-function frmModalDeletePet_Open() {
-    //frmModal_clear();
-    frmModalDeletePet.style.display = "block";
-}
-
-
-
-function frmModalDelete_click(e) {
-    if (e.target.classList.contains('modal-close')) {
-        frmModalDelete_close();
-    }
-    else if (e.target.classList.contains('modal-cancel')) {
-        frmModalDelete_close();
-    }
-    else if (e.target.classList.contains('modal-success')) {
-        const container = petCardSelected.parentElement;
-        container.removeChild(petCardSelected);
-        frmModalDelete_close()
     }
 }
 
@@ -124,6 +142,21 @@ function frmModal_AddPet(nombre, apellido, raza, celular, pais, imagen, acerca) 
      frmModal_close();
 }
 
+function frmModal_clear() {
+    Array.from(frmModalAddPet.querySelectorAll('input')).forEach(e => {
+        e.value = '';
+    });
+
+    Array.from(frmModalAddPet.querySelectorAll('textarea')).forEach(e => {
+        e.value = '';
+    });
+}
+
+function frmModal_close() {
+    frmModalAddPet.style.display = "none";
+    frmModal_clear();
+}
+
 function frmModal_UpdatePet(nombre, apellido, raza, celular, pais, imagen, acerca) {
     petCardSelected.querySelector('.card-nombre').textContent = nombre;
     petCardSelected.querySelector('.card-apellido').textContent = apellido;
@@ -134,16 +167,6 @@ function frmModal_UpdatePet(nombre, apellido, raza, celular, pais, imagen, acerc
     petCardSelected.querySelector('.card-acerca').textContent = acerca;
     
     frmModal_close();
-}
-
-function frmModal_clear() {
-    Array.from(frmModalAddPet.querySelectorAll('input')).forEach(e => {
-        e.value = '';
-    });
-
-    Array.from(frmModalAddPet.querySelectorAll('textarea')).forEach(e => {
-        e.value = '';
-    });
 }
 
 function frmModal_validarDatos(nombre, apellido, raza, celular, pais, imagen, acerca) {
@@ -178,54 +201,31 @@ function frmModal_validarDatos(nombre, apellido, raza, celular, pais, imagen, ac
     return true;
 }
 
-function frmModal_close() {
-    frmModalAddPet.style.display = "none";
-    frmModal_clear();
+
+
+function frmModalDelete_click(e) {
+    if (e.target.classList.contains('modal-close')) {
+        frmModalDelete_close();
+    }
+    else if (e.target.classList.contains('modal-cancel')) {
+        frmModalDelete_close();
+    }
+    else if (e.target.classList.contains('modal-success')) {
+        const container = petCardSelected.parentElement;
+        container.removeChild(petCardSelected);
+        frmModalDelete_close()
+    }
 }
 
 function frmModalDelete_close() {
     frmModalDeletePet.style.display = "none";
 }
-//petsContainer.addEventListener('mouseenter', petsContainer_mouseenter);
 
-petCard.addEventListener('mouseenter',petsContainer_mouseenter);
-petCard.addEventListener('mouseleave', petsContainer_mouseleave);
-
-function petsContainer_mouseenter(e) {
-    e.preventDefault();
-    if (e.target.classList.contains('card'))
-    {
-        const card = e.target;
-        const buttonEdit = card.querySelector(".card-edit");
-        const buttonDelete = card.querySelector(".card-delete");
-
-        if (buttonEdit) {
-            buttonEdit.style.display = "inline-block";
-        }
-        
-        if (buttonDelete) {
-            buttonDelete.style.display = "inline-block";
-        }
-    }
+function frmModalDelete_Open() {
+    frmModalDeletePet.style.display = "block";
 }
 
 
-function petsContainer_mouseleave(e) {
-    if (e.target.classList.contains('card'))
-    {
-        const card = e.target;
-        const buttonEdit = card.querySelector(".card-edit");
-        const buttonDelete = card.querySelector(".card-delete");
-
-        if (buttonEdit) {
-            buttonEdit.style.display = "none";
-        }
-        
-        if (buttonDelete) {
-            buttonDelete.style.display = "none";
-        }
-    }
-}
 //Este evento se usa para que cuando se dé click fuera del modal , el modal se cierre
 window.onclick = function(event) {
     if (event.target == frmModalAddPet) {
