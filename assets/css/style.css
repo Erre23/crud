@@ -102,6 +102,16 @@ li > a:hover {
           justify-content: flex-start;
 }
 
+.card-content p {
+  display: inline-block;
+  margin: 2px;
+  color: #1473e6;
+}
+
+.card-content p span {
+  font-weight: bold;
+}
+
 .card-image {
   width: 140px;
   height: 140px;
