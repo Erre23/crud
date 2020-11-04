@@ -1,0 +1,23 @@
+.section {
+    width: 100%;
+    border: 1px solid #1473e6;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.section-title {
+    background: gainsboro;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    color: #1473e6;
+}
+
+.section-content {
+    padding: 20px;
+    color: #1473e6;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <main>
+        <div id="petsContainer" class="container">
+            <div class="container-header">
+                <h2 class='container-title'>Dog Crud</h2>
+                <button id="btnAddPet" class='btn'>Agregar mascota</button>
+            </div>
+            <div class="container-body">
+                <div class="card">
+                    <button class="card-edit">Edit</button>
+                    <div class="card-content">
+                        <img src="https://i.pinimg.com/originals/59/9b/bb/599bbb49d7a3bb5546ff4017e9eb76ce.png" class="card-image"></img>
+                        <p><span class="card-nombre">Ziggy</span> <span class="card-apellido">Marley</span></p>
+                        <p><span class="card-raza">Golden Retriever</span> | <span class="card-celular">998877665</span></p>
+                        <p class="card-pais">Cánada</p>
+                        <p class="card-acerca">Todo acerca de la mascota</p>
+                    </div>
+                    <button class="card-delete">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div id="frmModalAddPet" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-close">&times;</span>
+                    <h2>Ingrese los siguientes datos</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="frm-col-w50">
+                            <input name="nombre" class="frm-control" type="text" placeholder="Nombre" >
+                        </div>
+                    
+                        <div class="frm-col-w50">
+                            <input name="apellido" class="frm-control" type="text" placeholder="Apellido" >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="frm-col-w50">
+                            <input name="raza" class="frm-control" type="text" placeholder="Raza" >
+                        </div>
+                        <div class="frm-col-w50">
+                            <input name="celular" class="frm-control" min=0 max=999999999 type="number"placeholder="Celular" >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="frm-col-w50">
+                            <input name="pais" class="frm-control" type="text" placeholder="País" >
+                        </div>
+                        <div class="frm-col-w50">
+                            <input name="imagen" class="frm-control" type="text" placeholder="URL de la imagen" value="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOtcOr8GroUntlaMu7QG3Ayd4_xxB5yRQMOw&usqp=CAU" >
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="frm-col-w100">
+                            <textarea name="acerca" class="frm-control" rows="5" placeholder="Sobre él/ella"  ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn btn-secondary modal-cancel">Cancel</div>
+                    <div class="btn modal-success">Aceptar</div>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div id="frmModalDeletePet" class="modal">
+            <div class="modal-content">
+                <div class="modal-header modal-header-alert">
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro que quiere eliminar a esta mascota?</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn btn-secondary modal-cancel">Cancel</div>
+                    <div class="btn btn-alert modal-success">Aceptar</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>

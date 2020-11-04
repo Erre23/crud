@@ -1,0 +1,28 @@
+.btn {
+    background: #1473e6;
+    border: 2px solid #1473e6;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    user-select: none;
+    &:hover {
+        background-color: white;
+        color: #1473e6;
+        cursor: pointer;
+    }
+    &-secondary{
+        background: grey;
+        border: 2px solid grey;
+    }
+    &-secondary:hover {
+        color: grey;
+    }
+    &-alert{
+        background: red;
+        border: 2px solid red;
+    }
+    &-alert:hover {
+        color: red;
+    }
+}

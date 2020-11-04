@@ -1,0 +1,28 @@
+
+.container {
+    width: 100%;
+    border: 1px solid #1473e6;
+    position: relative;
+    max-width: 1080px;
+    margin: auto;
+    min-height: 460px;
+    &-header {
+        background:  #1473e6;
+        padding: 20px;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &-title{
+        font-size: 40px;
+    }
+    &-body {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+}
